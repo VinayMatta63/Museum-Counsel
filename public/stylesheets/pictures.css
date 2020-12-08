@@ -1,0 +1,32 @@
+#pics{
+    display: flexbox;
+    justify-content: space-evenly;
+    text-align: center;
+}
+img{
+    width: 300px;
+    max-height: 200px;
+}
+
+@media(max-width:500px){
+    img{
+        width: fit-content;
+    }
+}
+@media(max-width:770px){
+    h2{
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    h3{
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+    img{
+        width: 300px;
+        max-height: 200px;
+    }
+    .manage{
+        display: inline;
+    }
+}

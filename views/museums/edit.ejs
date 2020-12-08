@@ -1,0 +1,56 @@
+<%- layout('layouts/boilerplate.ejs') %>
+
+<div class="row">
+    <h1 class="text-center">Edit Museum</h1>
+    <div class="col-md-6 offset-md-3">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <form action="/museums/<%= museum._id %>?_method=PUT" method="post" class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" id="title" name="museum[title]" class="form-control"
+                            value="<%= museum.title %> " required>
+                        <div class="valid-feedback">
+                            Looks Good!
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" id="location" name="museum[location]" class="form-control"
+                            value="<%=museum.location%>" required>
+                        <div class="valid-feedback">
+                            Looks Good!
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Ticket Price</label>
+                        <div class="input-group">
+                            <span class="input-group-text" id="ticket-label">&#x20B9;</span>
+                            <input type="number" class="form-control" id="price" required placeholder="0"
+                                aria-label="Username" aria-describedby="ticket-label" name="museum[ticket]"
+                                value="<%=museum.ticket%>">
+                            <div class="valid-feedback">
+                                Looks Good!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" name="museum[description]"
+                            required><%=museum.description%></textarea>
+                        <div class="valid-feedback">
+                            Looks Good!
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <button style="color: white;" class="btn btn-info w-100">Save Museum</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="/museums/<%= museum._id %> ">Cancel Edit</a>
+        </div>
+    </div>
+</div>

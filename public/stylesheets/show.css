@@ -1,0 +1,47 @@
+img{
+    height:350px;
+}
+
+#map{
+    width: 100%;
+    height: 100%;
+}
+.comment{
+    display: flex;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #dcdacb
+}
+.person{
+    margin-right: 30px;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+}
+.links{
+    display: flex;
+    justify-content:space-evenly;
+}
+
+@media (max-width:770px){
+    #map{
+        width: 100%;
+        height: 200px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    body{
+        font-size: 12px;
+    }
+    .card-link{
+        font-size: 13px;
+    }
+    img{
+        height:200px;
+    }
+    .comment{
+        font-size:13px;
+    }
+}
