@@ -18,6 +18,7 @@ const mongoSanitize = require('express-mongo-sanitize')
 const helmet = require('helmet')
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/MuseumCouncelDB'
 const MongoStore = require('connect-mongo')(session);
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 const museumsRoute = require('./routes/museums');
 const reviewsRoute = require('./routes/reviews');
@@ -65,7 +66,7 @@ const sessionConfig = {
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
-        // secure:true,
+        secure: true,
         expire: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
@@ -77,7 +78,17 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
-
+passport.use(new GoogleStrategy({
+    clientID: GOOGLE_CLIENT_ID,
+    clientSecret: GOOGLE_CLIENT_SECRET,
+    callbackURL: "http://www.example.com/auth/google/callback"
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+      return cb(err, user);
+    });
+  }
+));
 app.use((req, res, next) => {
     res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');

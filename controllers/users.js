@@ -11,7 +11,7 @@ module.exports.createUser = async (req, res, next) => {
         const regUser = await User.register(user, password);
         req.login(regUser, err => {
             if (err) return next(err);
-            req.flash('success', 'Welcome to Museum Councel!');
+            req.flash('success', 'Welcome to Museum Counsel!');
             res.redirect('/museums');
         })
     }

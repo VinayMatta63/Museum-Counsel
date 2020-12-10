@@ -26,7 +26,7 @@ module.exports.museumSchema = Joi.object({
         title: Joi.string().required().escapeHTML(),
         ticket: Joi.number().required().min(0),
         images: Joi.array(),
-        description: Joi.string().required().escapeHTML(),
+        description: Joi.string().required().escapeHTML().max(120),
         location: Joi.string().required().escapeHTML()
     }).required(),
     deleteImages: Joi.array()

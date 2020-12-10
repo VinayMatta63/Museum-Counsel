@@ -8,7 +8,7 @@ module.exports.createReview = async (req, res) => {
     museum.reviews.push(review);
     await review.save();
     await museum.save();
-    req.flash('success', 'Created the new review!');
+    req.flash('success', 'Review added!');
     res.redirect(`/museums/${museum._id}`);
 }
 
@@ -16,6 +16,6 @@ module.exports.deleteReview = async (req, res) => {
     const { id, reviewId } = req.params;
     await Museum.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
     await Review.findById(req.params.reviewId);
-    req.flash('success', 'Successfully deleted the review!');
+    req.flash('success', 'Review deleted!');
     res.redirect(`/museums/${id}`);
 }

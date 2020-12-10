@@ -3,7 +3,7 @@ const cities = require('./cities');
 const { descriptors, synons } = require('./seedHelpers')
 const Museum = require('../models/Museum');
 
-mongoose.connect('mongodb://localhost:27017/MuseumCouncelDB', {
+mongoose.connect('mongodb+srv://vin-mat_33:U4SnCqj0ZhfW1UU9@cluster0.7wpif.mongodb.net/<dbname>?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -20,7 +20,7 @@ db.once("open", () => {
 const sample = array => array[Math.floor(Math.random() * array.length)];
 const seedDB = async () => {
     await Museum.deleteMany({});
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 10; i++) {
         const ran = Math.floor(Math.random() * 150);
         const price = Math.floor(Math.random() * 100) + 10;
         const museum = new Museum({
@@ -42,7 +42,7 @@ const seedDB = async () => {
             ],
             description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga accusamus excepturi nesciunt, officiis porro beatae placeat iste quidem eligendi dolore! Repellendus fugit recusandae aut necessitatibus illo deleniti, architecto maxime ex',
             ticket: price,
-            author: "5fc347f38b5b4c0cda25aa5c"
+            author: "5fcfa4771129570566732c34"
         });
         await museum.save();
     }
