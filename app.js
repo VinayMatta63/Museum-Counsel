@@ -83,7 +83,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:8080/auth/google/callback"
+    callbackURL: "https://museum-counsel.herokuapp.com/auth/google/callback"
 },
     function (accessToken, refreshToken, profile, cb) {
         User.findOne({ email: profile.emails[0].value })
@@ -103,7 +103,7 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:8080/auth/facebook/callback",
+    callbackURL: "https://museum-counsel.herokuapp.com/auth/facebook/callback",
     profileFields: ['email']
 }, function (accessToken, refreshToken, profile, cb) {
     User.findOne({ email: profile.emails[0].value })
