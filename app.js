@@ -78,17 +78,17 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
-// passport.use(new GoogleStrategy({
-//     clientID: GOOGLE_CLIENT_ID,
-//     clientSecret: GOOGLE_CLIENT_SECRET,
-//     callbackURL: "http://www.example.com/auth/google/callback"
-//   },
-//   function(accessToken, refreshToken, profile, cb) {
-//     User.findOrCreate({ googleId: profile.id }, function (err, user) {
-//       return cb(err, user);
-//     });
-//   }
-// ));
+passport.use(new GoogleStrategy({
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: "https://museum-counsel.herokuapp.com/auth/google/callback"
+},
+    function (accessToken, refreshToken, profile, cb) {
+        User.findOrCreate({ googleId: profile.id }, function (err, user) {
+            return cb(err, user);
+        });
+    }
+));
 app.use((req, res, next) => {
     res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
@@ -102,6 +102,15 @@ passport.deserializeUser(User.deserializeUser());
 app.use('/', usersRoute);
 app.use('/museums', museumsRoute);
 app.use('/museums/:id/reviews', reviewsRoute);
+
+app.get('/auth/google',
+    passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+app.get('/auth/google/callback',
+    passport.authenticate('google', { failureRedirect: '/login' }),
+    function (req, res) {
+        res.redirect('/');
+    });
 
 app.get('/', (req, res) => {
     res.render('home.ejs');
