@@ -11,7 +11,7 @@
             <div class="carousel-inner">
                 <% museum.images.forEach((img,i)=>{%>
                 <div class="carousel-item <%= i===0? 'active' : '' %>">
-                    <img src="<%= img.url %>" class="d-block w-100" alt="..." >
+                    <img src="<%= img.url %>" class="d-block w-100" alt="...">
                 </div>
                 <%}) %>
             </div>
@@ -87,9 +87,9 @@
         <hr>
         <% if(!museum.reviews.length){ %>
         <h5 class="text-center mt-4 mb-2">No Reviews yet.</h5>
-        <% if(!currentUser) {%> 
+        <% if(!currentUser) {%>
         <h6 class="text-muted text-center mb-5">(Login to leave your own)</h6>
-        <% } %> 
+        <% } %>
         <% }else{ %>
         <% for(let review of museum.reviews){ %>
         <div class="mb-3 comment">
@@ -99,7 +99,11 @@
                     alt="">
             </div>
             <div class="comment-box d-inline">
-                <h5><%= review.author.username %></h5>
+                <% if(!review.author.username){ %>
+                <h5><%=review.author.email %> </h5>
+                <% }else{ %>
+                <h5><%=review.author.username %> </h5>
+                <% } %>
                 <p class="starability-result" data-rating="<%= review.rating %>">
                     Rated: <%= review.rating %> stars
                 </p>
@@ -109,7 +113,7 @@
                     <button class="btn btn-sm btn-danger">Delete</button>
                 </form>
                 <%} %>
-             
+
             </div>
         </div>
         <% } %>

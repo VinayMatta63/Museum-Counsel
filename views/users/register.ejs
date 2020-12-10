@@ -1,4 +1,5 @@
 <%- layout('layouts/boilerplate.ejs') %>
+<link rel="stylesheet" href="stylesheets/register.css">
 
 <div class="container d-flex justify-content-center align-items-center mt-5 row">
     <div class="col-md-7 col-xl-4">
@@ -30,8 +31,17 @@
                     <button class="btn btn-success w-100">Register</button>
                 </form>
             </div>
-
         </div>
+        <div> <a class="btn btn-md btn-google btn-block text-uppercase btn-outline " href="/auth/google"><img
+                    src="https://img.icons8.com/color/16/000000/google-logo.png"> Signup Using
+                Google</a> </div>
+        <br>
+        <div>
+            <a class="btn btn-md btn-social btn-facebook" href="/auth/facebook">
+                Sign in with Facebook
+            </a>
+        </div>
+        <br>
         <p class="text-center">Already have an account? <a href="/login">Sign in</a></p>
     </div>
 </div>

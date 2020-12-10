@@ -1,0 +1,22 @@
+.btn-google {
+    width: 100%;
+    /* color: #545454; */
+    background-color: #ffffff;
+    box-shadow: 0 3px 5px 3px #ddd;
+    font-weight: 450;
+}
+.btn-facebook {
+    width: 100%;
+    color: #fff;
+    background-color: #3b5998;
+    border-color: rgba(0,0,0,0.2);
+    box-shadow: 0 3px 5px 3px #ddd
+}
+
+.btn-social {
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -19,10 +19,12 @@ const helmet = require('helmet')
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/MuseumCouncelDB'
 const MongoStore = require('connect-mongo')(session);
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
 
 const museumsRoute = require('./routes/museums');
 const reviewsRoute = require('./routes/reviews');
 const usersRoute = require('./routes/users');
+const { profile } = require('console');
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
@@ -66,7 +68,7 @@ const sessionConfig = {
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
-        secure: true,
+        // secure: true,
         expire: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
@@ -81,14 +83,43 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "https://museum-counsel.herokuapp.com/auth/google/callback"
+    callbackURL: "http://localhost:8080/auth/google/callback"
 },
     function (accessToken, refreshToken, profile, cb) {
-        User.findOrCreate({ googleId: profile.id }, function (err, user) {
-            return cb(err, user);
-        });
+        User.findOne({ email: profile.emails[0].value })
+            .then((existingUser) => {
+                if (existingUser) {
+                    cb(null, existingUser)
+                } else {
+                    new User({ email: profile.emails[0].value }).save()
+                        .then((user) => {
+                            cb(null, user)
+                        })
+                }
+            })
+
     }
 ));
+passport.use(new FacebookStrategy({
+    clientID: process.env.FACEBOOK_APP_ID,
+    clientSecret: process.env.FACEBOOK_APP_SECRET,
+    callbackURL: "http://localhost:8080/auth/facebook/callback",
+    profileFields: ['email']
+}, function (accessToken, refreshToken, profile, cb) {
+    User.findOne({ email: profile.emails[0].value })
+        .then((existingUser) => {
+            if (existingUser) {
+                cb(null, existingUser)
+            } else {
+                new User({ email: profile.emails[0].value }).save()
+                    .then((user) => {
+                        cb(null, user)
+                    })
+            }
+        })
+}
+));
+
 app.use((req, res, next) => {
     res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
@@ -96,8 +127,16 @@ app.use((req, res, next) => {
     next();
 })
 
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
+passport.serializeUser((user, done) => {
+    done(null, user._id);
+});
+passport.deserializeUser((id, done) => {
+    User.findById(id).then((user) => {
+        done(null, user);
+    })
+});
 
 app.use('/', usersRoute);
 app.use('/museums', museumsRoute);
@@ -108,6 +147,14 @@ app.get('/auth/google',
 
 app.get('/auth/google/callback',
     passport.authenticate('google', { failureRedirect: '/login' }),
+    function (req, res) {
+        res.redirect('/');
+    });
+
+app.get('/auth/facebook', passport.authenticate('facebook'));
+
+app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', { failureRedirect: '/login' }),
     function (req, res) {
         res.redirect('/');
     });
