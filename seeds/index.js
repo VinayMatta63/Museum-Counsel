@@ -42,7 +42,7 @@ const seedDB = async () => {
             ],
             description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga accusamus excepturi nesciunt, officiis porro beatae placeat iste quidem eligendi dolore! Repellendus fugit recusandae aut necessitatibus illo deleniti, architecto maxime ex',
             ticket: price,
-            author: "5fcfa4771129570566732c34"
+            author: "5fede469771722022891f2a8"
         });
         await museum.save();
     }

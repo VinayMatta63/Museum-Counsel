@@ -19,6 +19,7 @@ module.exports.createMuseum = async (req, res) => {
     }).send()
     const museum = new Museum(req.body.museum);
     museum.geometry = geoData.body.features[0].geometry;
+    console.log(req.files)
     museum.images = req.files.map(f => ({ url: f.path, filename: f.filename }))
     museum.author = req.user._id;
     await museum.save();

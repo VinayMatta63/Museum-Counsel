@@ -3,10 +3,13 @@ const router = express.Router();
 const wrapAsync = require('../utils/wrapAsync');
 const users = require('../controllers/users')
 const passport = require('passport');
+const multer = require('multer');
+const { storage } = require('../config');
+const upload = multer({ storage });
 
 router.route('/register')
     .get(users.getRegister)
-    .post(wrapAsync(users.createUser))
+    .post(upload.any('image'), wrapAsync(users.createUser))
 
 router.route('/login')
     .get(users.getLogin)

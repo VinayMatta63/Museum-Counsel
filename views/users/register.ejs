@@ -6,7 +6,8 @@
         <div class="card shadow mb-4">
             <div class="card-body">
                 <h5 class="card-title mb-4">Register</h5>
-                <form action="/register" class="needs-validation" method="POST" novalidate>
+                <form action="/register" class="needs-validation" method="POST" novalidate
+                    enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" id="email" name="email" class="form-control" required autofocus>
@@ -28,19 +29,20 @@
                             Looks Good!
                         </div>
                     </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Profile Picture</label>
+                        <input type="file" id="image" name="image" class="form-control">
+                        <div class="valid-feedback">
+                            Looks Good!
+                        </div>
+                    </div>
                     <button class="btn btn-success w-100">Register</button>
                 </form>
             </div>
         </div>
-        <div> <a class="btn btn-md btn-google btn-block text-uppercase btn-outline " href="/auth/google"><img
-                    src="https://img.icons8.com/color/16/000000/google-logo.png"> Signup Using
+        <div> <a class="btn btn-md btn-google btn-block btn-outline " href="/auth/google"><img
+                    src="https://img.icons8.com/color/16/000000/google-logo.png"> Login Using
                 Google</a> </div>
-        <br>
-        <div>
-            <a class="btn btn-md btn-social btn-facebook" href="/auth/facebook">
-                Sign in with Facebook
-            </a>
-        </div>
         <br>
         <p class="text-center">Already have an account? <a href="/login">Sign in</a></p>
     </div>

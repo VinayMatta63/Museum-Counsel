@@ -94,9 +94,8 @@
         <% for(let review of museum.reviews){ %>
         <div class="mb-3 comment">
             <div>
-                <img class="person"
-                    src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
-                    alt="">
+                <img class="person" src="<%= review.author.image.url %>" alt="">
+
             </div>
             <div class="comment-box d-inline">
                 <% if(!review.author.username){ %>
@@ -110,7 +109,8 @@
                 <p><%= review.body %></p>
                 <% if(currentUser && review.author.equals(currentUser._id)){ %>
                 <form action="/museums/<%= museum._id %>/reviews/<%= review._id %>?_method=DELETE" method="post">
-                    <button class="btn btn-sm btn-danger">Delete</button>
+                    <input class="delete" type="image"
+                        src="https://res.cloudinary.com/dpnapmmwm/image/upload/v1609476885/Museum%20Councel/delete-icon-image-17_aziglx.png">
                 </form>
                 <%} %>
 

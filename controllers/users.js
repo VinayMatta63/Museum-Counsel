@@ -7,7 +7,13 @@ module.exports.getRegister = (req, res) => {
 module.exports.createUser = async (req, res, next) => {
     try {
         const { email, username, password } = req.body;
-        const user = new User({ email, username });
+        let image = req.files.map(f => ({ url: f.path, filename: f.filename }))[0]
+        if (image === undefined) {
+            url = "https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
+            filename = "temp"
+            image = { url, filename }
+        }
+        const user = new User({ email, username, image });
         const regUser = await User.register(user, password);
         req.login(regUser, err => {
             if (err) return next(err);

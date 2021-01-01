@@ -23,6 +23,10 @@ img{
     display: flex;
     justify-content:space-evenly;
 }
+.delete{
+    max-width: 35px;
+    max-height: 35px;
+}
 
 @media (max-width:770px){
     #map{
