@@ -67,7 +67,7 @@ const sessionConfig = {
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
-        secure: true,
+        // secure: true,
         expire: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
@@ -82,8 +82,8 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "https://museum-counsel.herokuapp.com/auth/google/callback"
-    // callbackURL: "http://localhost:8080/auth/google/callback"
+    // callbackURL: "https://museum-counsel.herokuapp.com/auth/google/callback"
+    callbackURL: "http://localhost:8080/auth/google/callback"
 },
     function (accessToken, refreshToken, profile, cb) {
         User.findOne({ email: profile.emails[0].value, })
