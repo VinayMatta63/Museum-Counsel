@@ -4,7 +4,7 @@ const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
     center: museum.geometry.coordinates, // starting position [lng, lat]
-    zoom: 13// starting zoom
+    zoom: 10// starting zoom
 });
 
 map.addControl(new mapboxgl.NavigationControl());
