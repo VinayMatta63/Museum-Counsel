@@ -28,7 +28,7 @@
                     <% for(museum of museums){ %>
                         <div class="card mb-3">
                             <div class="row">
-                                <div class="col-md-5">
+                                <div class="col-md-4">
                                     <% if(museum.images.length){ %>
                                         <img class="img-fluid" src="<%=museum.images[0].url%>" alt="">
                                         <% }else{ %>
@@ -37,7 +37,7 @@
                                                 alt="">
                                             <% } %>
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-8">
                                     <div class="card-body">
                                         <h5 class="card-title mt-md-2 mt-sm-1">
                                             <%= museum.title %>
@@ -50,7 +50,8 @@
                                                 <%= museum.location %>
                                             </small>
                                         </p>
-                                        <a href="/museums/<%= museum.id %> " class="btn btn-md btn-primary mt-md-3 btnSpl">View
+                                        <a href="/museums/<%= museum.id %> "
+                                            class="btn btn-md btn-primary mt-md-3 btnSpl">View
                                         </a>
                                     </div>
                                 </div>
@@ -69,7 +70,7 @@
             <script src="/javascripts/validateForms.js"></script>
             <script>
                 const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
-                const museums = { features: <%- JSON.stringify(museums) %> }
+                const museums = { features: <% - JSON.stringify(museums) %> }
             </script>
             <script src="/javascripts/clusterMap.js"></script>
 
