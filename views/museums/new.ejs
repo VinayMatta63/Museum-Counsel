@@ -1,60 +1,69 @@
 <%- layout('layouts/boilerplate.ejs') %>
-<div class="row">
-    <h1 class="text-center">New Museum</h1>
-    <div class="col-md-6 offset-md-3">
-        <div class="card shadow mb-4">
-            <div class="card-body">
-                <form action="/museums" method="post" novalidate class="needs-validation" enctype="multipart/form-data">
-                    <div class="mb-3">
-                        <label for="title" class="form-label">Title</label>
-                        <input type="text" id="title" name="museum[title]" class="form-control" required>
-                        <div class="valid-feedback">
-                            Looks Good!
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="location" class="form-label">Location</label>
-                        <input type="text" id="location" name="museum[location]" class="form-control" required>
-                        <div class="valid-feedback">
-                            Looks Good!
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="price" class="form-label">Ticket Price</label>
-                        <div class="input-group">
-                            <span class="input-group-text" id="ticket-label">&#x20B9;</span>
-                            <input type="number" class="form-control" id="price" placeholder="0" aria-label="Username"
-                                aria-describedby="ticket-label" name="museum[ticket]" required>
+    <link rel="stylesheet" href="/stylesheets/new.css">
+    <div class="row">
+        <h1 class="text-center mb-3" style="color: #0f1123;">New Museum</h1>
+        <div class="col-md-6 image">
+            <p class="head">Indian Museum</p>
+            <p class="text">Founded in 1814 at the cradle of the Asiatic Society of Bengal (at the present building of the Asiatic Society, 1 Park Street, Kolkata), Indian Museum is the earliest and the largest multipurpose Museum not only in the Indian subcontinent but also in the Asia-Pacific region of the world.</p>    
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <form action="/museums" method="post" novalidate class="needs-validation"
+                        enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Title</label>
+                            <input type="text" id="title" name="museum[title]" class="form-control" required>
                             <div class="valid-feedback">
                                 Looks Good!
                             </div>
                         </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="description" class="form-label">Description</label>
-                        <textarea class="form-control" id="description" name="museum[description]" required></textarea>
-                        <div class="valid-feedback">
-                            Looks Good!
+                        <div class="mb-3">
+                            <label for="location" class="form-label">Location</label>
+                            <input type="text" id="location" name="museum[location]" class="form-control" required>
+                            <div class="valid-feedback">
+                                Looks Good!
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="image" class="form-label">Image(s)</label>
-                        <input type="file" id="image" name="image" class="form-control" multiple>
-                        <div class="valid-feedback">
-                            Looks Good!
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Ticket Price</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="ticket-label">&#x20B9;</span>
+                                <input type="number" class="form-control" id="price" placeholder="0"
+                                    aria-label="Username" aria-describedby="ticket-label" name="museum[ticket]"
+                                    required>
+                                <div class="valid-feedback">
+                                    Looks Good!
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3">
-                        <button class="btn btn-success w-100">Add Museum</button>
-                    </div>
-                </form>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" id="description" name="museum[description]"
+                                required></textarea>
+                            <div class="valid-feedback">
+                                Looks Good!
+                            </div>
+                        </div>
 
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Image(s)</label>
+                            <input type="file" id="image" name="image" class="form-control" multiple>
+                            <div class="valid-feedback">
+                                Looks Good!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-success w-100">Add Museum</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="/museums">Home</a>
             </div>
         </div>
-        <div class="text-center">
-            <a href="/museums">Back to Home</a>
-        </div>
-    </div>
 
-</div>
+    </div>

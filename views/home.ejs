@@ -13,38 +13,66 @@
     <title>Museum Counsel</title>
 </head>
 
-<body class="d-flex text-center text-white bg-dark">
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <header class="mb-auto">
-            <div>
-                <h3 class="float-md-left mb-0">Museum Counsel</h3>
-                <nav class="nav nav-masthead justify-content-center float-md-right">
-                    <a class="nav-link active" id="home" href="#">Home</a>
-                    <a class="nav-link" href="/museums">Museums</a>
-                    <% if(!currentUser){ %>
-                    <a class="nav-link" href="/login">Login</a>
-                    <a class="nav-link" href="/register">Register</a>
-                    <% }else{ %>
-                    <a class="nav-link" href="/logout">Logout</a>
-                    <% } %>
-                </nav>
-            </div>
-        </header>
-        <main>
-            <h1>Museum Counsel</h1>
-            <p class="lead">Welcome to Museum Counsel! <br> Information about all Museums in one place.
-                <br>
-                Feel free to share your exeriences in the reviews. :) </p>
-            <a href="/museums" class="btn btn-secondary font-weight-bold">View Museums</a>
-        </main>
-        <footer class="mt-auto text-white-50">
-            <p>&copy; 2020 Museum Counsel</p>
-        </footer>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy"
-        crossorigin="anonymous"></script>
 
-</body>
+<% const arr=[
+    ['https://images.unsplash.com/photo-1610045828351-3f9737ca7bd0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1468&q=80'
+    ,'Victoria Memorial, Kolkata'],
+    ['https://images.unsplash.com/photo-1600324832899-4031cd16c99c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80'
+    ,'Mysore Palace, Mysore'],
+    ['https://images.unsplash.com/photo-1561486008-1011a284acfb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=747&q=80'
+    ,'Albert Museum, Jaipur'],
+    ['https://images.unsplash.com/photo-1532375810709-75b1da00537c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1510&q=80'
+    ,'Indian Flag'],
+    ['https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/India_national_museum_01.jpg/1024px-India_national_museum_01.jpg'
+    ,'National Museum, Delhi'],
+    ['https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Indian_Museum.jpg/800px-Indian_Museum.jpg', 'Indian Museum, Kolkata'
+    ],
+    ['https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Salarjung_Musium.JPG/800px-Salarjung_Musium.JPG', 'Salarjung Museum, Hyderabad'
+    ],
+    ['https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Prince_of_Wales_Museum%2C_Mumbai_01.jpg/1024px-Prince_of_Wales_Museum%2C_Mumbai_01.jpg'
+    ,'Prince of Wales Museum, Mumbai'] ]%>
+
+    <%let num=Math.floor(Math.random() * arr.length)%>
+        <% let imgUrl=arr[num][0]%>
+            <% let name=arr[num][1] %>
+
+                <body class="d-flex text-center text-white bg-dark"
+                    style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url(<%=imgUrl%>);">
+                    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+                        <header class="mb-auto">
+                            <div>
+                                <h3 class="float-md-left mb-0">Museum Counsel</h3>
+                                <nav class="nav nav-masthead justify-content-center float-md-right">
+                                    <a class="nav-link active" id="home" href="#">Home</a>
+                                    <a class="nav-link" href="/museums">Museums</a>
+                                    <% if(!currentUser){ %>
+                                        <a class="nav-link" href="/login">Login</a>
+                                        <a class="nav-link" href="/register">Register</a>
+                                        <% }else{ %>
+                                            <a class="nav-link" href="/logout">Logout</a>
+                                            <% } %>
+                                </nav>
+                            </div>
+                        </header>
+                        <main>
+                            <h1>Museum Counsel</h1>
+                            <p class="lead">Welcome to Museum Counsel! <br> Information about all Museums in one place.
+                                <br>
+                                Feel free to share your exeriences in the reviews. :)
+                            </p>
+                            <a href="/museums" class="btn btn-secondary font-weight-bold">View Museums</a>
+                        </main>
+                        <footer class="mt-auto text-white-50">
+                            <span>
+                                <%=name%>
+                            </span>
+                            <p class="mt-4">&copy; 2020 Museum Counsel</p>
+                        </footer>
+                    </div>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js"
+                        integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy"
+                        crossorigin="anonymous"></script>
+
+                </body>
 
 </html>
