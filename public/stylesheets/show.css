@@ -1,5 +1,12 @@
+body{
+    font-family: 'Roboto',sans-serif;
+}
 img{
     height:350px;
+}
+.card-title{
+    font-weight: 500;
+    font-size: 22px;
 }
 
 #map{
@@ -38,14 +45,21 @@ img{
     
     body{
         font-size: 12px;
+        text-align: center;
     }
     .card-link{
         font-size: 13px;
+    }
+    .card-title{
+        font-size: 20px;
     }
     img{
         height:200px;
     }
     .comment{
         font-size:13px;
+    }
+    .reviews{
+        font-size: 20px;
     }
 }

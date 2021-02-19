@@ -8,6 +8,9 @@
         integrity="sha384-CuOF+2SnTUfTwSZjCXf01h7uYhfOBuxIhGKPbfEJ3+FqH/s6cIFN9bGr1HmAg4fQ" crossorigin="anonymous">
     <link rel="icon"
         href="https://res.cloudinary.com/dpnapmmwm/image/upload/v1609475126/Museum%20Councel/letter-m-icon-png-21861-Windows_bqlljq.ico">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
     <title>Museum Counsel</title>
@@ -16,17 +19,17 @@
 
 <body class="d-flex flex-column vh-100">
     <%- include('../partials/navbar.ejs') %>
-    <main class="container mt-4">
-        <%- include('../partials/flash.ejs') %>
-        <%- body %>
-    </main>
-    <%- include('../partials/footer.ejs') %>
+        <main class="container mt-4">
+            <%- include('../partials/flash.ejs') %>
+                <%- body %>
+        </main>
+        <%- include('../partials/footer.ejs') %>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy"
-        crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy"
+                crossorigin="anonymous"></script>
 
-    <script src="/javascripts/validateForms.js"></script>
+            <script src="/javascripts/validateForms.js"></script>
 
 
 </body>

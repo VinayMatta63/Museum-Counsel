@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="/stylesheets/index.css">
     <link rel="icon"
         href="https://res.cloudinary.com/dpnapmmwm/image/upload/v1609475126/Museum%20Councel/letter-m-icon-png-21861-Windows_bqlljq.ico">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
     <title>Museum Counsel</title>
@@ -70,7 +71,7 @@
             <script src="/javascripts/validateForms.js"></script>
             <script>
                 const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
-                const museums = { features: <% - JSON.stringify(museums) %> }
+                const museums = { features: <%- JSON.stringify(museums) %> }
             </script>
             <script src="/javascripts/clusterMap.js"></script>
 
