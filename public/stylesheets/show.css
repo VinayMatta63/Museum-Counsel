@@ -45,6 +45,8 @@ img{
     
     body{
         font-size: 12px;
+    }
+    .card{
         text-align: center;
     }
     .card-link{
